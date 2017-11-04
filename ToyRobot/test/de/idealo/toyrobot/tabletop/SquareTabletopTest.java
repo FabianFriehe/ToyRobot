@@ -1,41 +1,64 @@
 package de.idealo.toyrobot.tabletop;
 
-
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Before;
+
 public class SquareTabletopTest {
+
+	private SquareTabletop squareTabletop;
+
+	@Before
+	public void before() {
+		squareTabletop = new SquareTabletop(5);
+	}
 
 	@Test
 	public void initTest() {
-		createField(5);
-		createField(1);
-	}
-	
-	@Test(expected = Exception.class)
-	public void initFalseTest1() {
-		createField(0);
-	}
-	
-	@Test(expected = Exception.class)
-	public void initFalseTest2() {
-		createField(-1);
+		createFields(5);
+		createFields(1);
 	}
 
-	private void createField(int sideLength) {
+	@Test(expected = Exception.class)
+	public void initFalseTest1() {
+		createFields(0);
+	}
+
+	@Test(expected = Exception.class)
+	public void initFalseTest2() {
+		createFields(-1);
+	}
+
+	private void createFields(int sideLength) {
 		SquareTabletop squareTabletopTest = new SquareTabletop(sideLength);
-				
-		boolean[][] testField = squareTabletopTest.getFields();
-		
-		int lengthX = testField.length;
-		
+
+		boolean[][] testFields = squareTabletopTest.getFields();
+
+		int lengthX = testFields.length;
+
 		assertEquals(sideLength, lengthX);
-		
-		for(int i = 0; i < lengthX; i++) {
-			int lengthY = testField[i].length;
+
+		for (int i = 0; i < lengthX; i++) {
+			int lengthY = testFields[i].length;
 			assertEquals(sideLength, lengthY);
 		}
+	}
+
+	@Test
+	public void canMoveTest() {
+		assertEquals(true, squareTabletop.canMove(0, 0));
+		assertEquals(true, squareTabletop.canMove(4, 4));
+		assertEquals(true, squareTabletop.canMove(3, 1));
+
+		assertEquals(false, squareTabletop.canMove(0, 5));
+		assertEquals(false, squareTabletop.canMove(5, 4));
+		assertEquals(false, squareTabletop.canMove(5, 5));
+		assertEquals(false, squareTabletop.canMove(-1, 3));
+		assertEquals(false, squareTabletop.canMove(2, -1));
+
+
 	}
 
 }

@@ -20,6 +20,15 @@ public class SquareTabletop extends Tabletop {
 		this.sideLength = sideLength;
 		fields = new boolean[sideLength][sideLength];
 	}
+
+
+	@Override
+	public boolean canMove(int posX, int poxY) {
+		if(posX >= sideLength || posX < 0 || poxY >= sideLength || poxY < 0) {
+			return false;
+		}
+		return true;
+	}
 	
 	
 	
