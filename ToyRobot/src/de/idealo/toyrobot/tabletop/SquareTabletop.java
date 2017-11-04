@@ -24,7 +24,9 @@ public class SquareTabletop extends Tabletop {
 
 	@Override
 	public boolean canMove(int posX, int poxY) {
-		if(posX >= sideLength || posX < 0 || poxY >= sideLength || poxY < 0) {
+		boolean posXBetween0andSideLength = posX >= sideLength || posX < 0;
+		boolean posYBetween0andSideLength = poxY >= sideLength || poxY < 0;
+		if(posXBetween0andSideLength || posYBetween0andSideLength) {
 			return false;
 		}
 		return true;
