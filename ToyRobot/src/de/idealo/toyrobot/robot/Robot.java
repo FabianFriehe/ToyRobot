@@ -45,6 +45,45 @@ public class Robot {
 		return true;
 	}
 
+	/**
+	 * Move the robot one unit forward in the direction it is currently facing.
+	 * 
+	 * @return false if the robot can not move forward
+	 */
+	public boolean move() {
+		if(direction == null) {
+			return false;
+		}
+		
+		int newPosX = this.posX;
+		int newPosY = this.posY;
+
+		switch (this.direction) {
+		case NORTH:
+			newPosY++;
+			break;
+		case WEST:
+			newPosX--;
+			break;
+		case SOUTH:
+			newPosY--;
+			break;
+		case EAST:
+			newPosX++;
+			break;
+		}
+
+		boolean canMoveToNewPosition = tabletop.canMove(newPosX, newPosY);
+		if (!canMoveToNewPosition) {
+			return false;
+		}
+		
+		this.posX = newPosX;
+		this.posY = newPosY;
+		
+		return true;
+	}
+
 	public int getPosX() {
 		return posX;
 	}
