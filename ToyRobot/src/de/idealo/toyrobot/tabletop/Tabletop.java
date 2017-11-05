@@ -17,10 +17,10 @@ public abstract class Tabletop {
 	 * Returns if the Robot can be moved to the field with the coordinates
 	 * 
 	 * @param posX x coordinate
-	 * @param poxY y coordinate
+	 * @param posY y coordinate
 	 * @return if the Robot can be moved to the field with the coordinates
 	 */
-	public abstract boolean canMove(int posX, int poxY);
+	public abstract boolean canMove(int posX, int posY);
 
 	public boolean[][] getFields() {
 		return fields;
