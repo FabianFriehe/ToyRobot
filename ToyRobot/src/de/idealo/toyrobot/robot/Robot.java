@@ -27,16 +27,21 @@ public class Robot {
 	 * 
 	 * @param posX
 	 *            x coordinate
+	 * 
 	 * @param poxY
 	 *            y coordinate
+	 * @param direction
+	 *            direction
 	 * @return true if the robot if placed successfully
 	 */
-	public boolean place(int posX, int posY) {
-		if (!tabletop.canMove(posX, posY)) {
+	public boolean place(int posX, int posY, Direction direction) {
+		boolean isInvalidPlaceParameter = !tabletop.canMove(posX, posY) || direction == null;
+		if (isInvalidPlaceParameter) {
 			return false;
 		}
 		this.posX = posX;
 		this.posY = posY;
+		this.direction = direction;
 		return true;
 	}
 
