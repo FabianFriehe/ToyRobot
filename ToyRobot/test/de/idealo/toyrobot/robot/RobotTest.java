@@ -82,6 +82,44 @@ public class RobotTest {
 		assertEquals(-1, robot.getPosX());
 		assertEquals(-1, robot.getPosY());
 	}
+	
+	@Test
+	public void leftTest() {
+		assertNull(robot.left());
+		assertNull(robot.getDirection());
+		
+		robot.place(0, 0, Direction.NORTH);
+
+		assertEquals(Direction.WEST, robot.left());
+		assertEquals(Direction.SOUTH, robot.left());
+		
+		assertEquals(Direction.SOUTH, robot.getDirection());
+		
+		assertEquals(Direction.EAST, robot.left());
+		assertEquals(Direction.NORTH, robot.left());
+		
+		assertEquals(Direction.NORTH, robot.getDirection());
+		
+	}
+	
+	@Test
+	public void rightTest() {
+		assertNull(robot.right());
+		assertNull(robot.getDirection());
+		
+		robot.place(0, 0, Direction.NORTH);
+
+		assertEquals(Direction.EAST, robot.right());
+		assertEquals(Direction.SOUTH, robot.right());
+		
+		assertEquals(Direction.SOUTH, robot.getDirection());
+		
+		assertEquals(Direction.WEST, robot.right());
+		assertEquals(Direction.NORTH, robot.right());
+		
+		assertEquals(Direction.NORTH, robot.getDirection());
+		
+	}
 
 
 	private void placeRobotFalse(int posX, int posY, Direction direction) {
