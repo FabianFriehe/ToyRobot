@@ -142,6 +142,20 @@ public class Robot {
 		return this.direction;
 	}
 
+	/**
+	 * Return the position (x, y and direction) of the robot.
+	 *  
+	 * @return the position (x, y and direction) of the robot
+	 */
+	@Override
+	public String toString() {
+		boolean isRobotPlaced = this.posX != -1 && this.posY != -1 && this.direction != null;
+		if (!isRobotPlaced) {
+			return "Output: ROBOT MISSING";
+		}
+		return "Output: " + this.posX + ", " + this.posY + ", " + this.direction;
+	}
+
 	public int getPosX() {
 		return posX;
 	}

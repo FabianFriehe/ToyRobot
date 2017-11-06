@@ -120,6 +120,17 @@ public class RobotTest {
 		assertEquals(Direction.NORTH, robot.getDirection());
 		
 	}
+	
+	@Test
+	public void toStringTest() {
+		assertEquals("Output: ROBOT MISSING", robot.toString());
+		
+		robot.place(0, 0, Direction.NORTH);
+		assertEquals("Output: 0, 0, NORTH", robot.toString());
+		
+		robot.place(1, 2, Direction.EAST);
+		assertEquals("Output: 1, 2, EAST", robot.toString());		
+	}
 
 
 	private void placeRobotFalse(int posX, int posY, Direction direction) {
