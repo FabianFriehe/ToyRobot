@@ -72,7 +72,10 @@ public class Controller {
 	 * @return false if command is EXIT
 	 */
 	private static boolean callRobotFunction(Robot robot, String command) {
-		if (Pattern.matches("PLACE\\s\\d+,\\d+,(NORTH|WEST|SOUTH|EAST)", command)) {
+		// Regex for PLACE command
+		String placeCommandRegex = "PLACE\\s\\d+,\\d+,(NORTH|WEST|SOUTH|EAST)";
+		boolean commandMatchesPlaceCommandRegex = Pattern.matches(placeCommandRegex, command);
+		if (commandMatchesPlaceCommandRegex) {
 			String[] splitResults = command.split("\\s")[1].split(",");
 			int posX = Integer.parseInt(splitResults[0]);
 			int posY = Integer.parseInt(splitResults[1]);
@@ -94,7 +97,7 @@ public class Controller {
 		} else if ("EXIT".equals(command)) {
 			return false;
 		} else {
-			System.out.println("Incorrect input!");
+			System.out.print("Incorrect input!\n");
 		}
 		return true;
 	}

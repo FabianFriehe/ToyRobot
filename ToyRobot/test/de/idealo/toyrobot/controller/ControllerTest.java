@@ -45,7 +45,19 @@ public class ControllerTest {
 		controller.simulateRobot("commands4.txt");
 		assertEquals("Output: ROBOT MISSING\n", outContent.toString());
 	}
-		
+	
+	@Test
+	public void simulateRobotTest5() {
+		controller.simulateRobot("commands5.txt");
+		assertEquals("Output: 1, 1, SOUTH\n", outContent.toString());
+	}
+	
+	@Test
+	public void simulateRobotTest6() {
+		controller.simulateRobot("commands6.txt");
+		assertEquals("Incorrect input!\nOutput: 1, 1, SOUTH\n", outContent.toString());
+	}
+			
 
 	@After
 	public void cleanUpStreams() {
